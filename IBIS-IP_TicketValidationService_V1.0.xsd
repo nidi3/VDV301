@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by Markus Giedigkeit (Trapeze-Elgeba GmbH) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--====  TicketValidationService 0.1 2016-06-16  ====-->
+	<!--++ CurrentStopPoint ++-->
+	<xs:complexType name="TicketValidationService.GetCurrentStopPointResponseStructure">
+		<xs:choice>
+			<xs:element name="CurrentStopPointData" type="TicketValidationService.CurrentStopPointData"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.CurrentStopPointData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CurrentStopPoint" type="StopInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ Razzia ++-->
+	<xs:complexType name="TicketValidationService.GetRazziaResponseStructure">
+		<xs:choice>
+			<xs:element name="RazziaState" type="TicketRazziaInformationEnumeration"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ CurrentLine ++-->
+	<xs:complexType name="TicketValidationService.GetCurrentLineResponseStructure">
+		<xs:choice>
+			<xs:element name="CurrentLineData" type="TicketValidationService.CurrentStopPointData"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.CurrentLineData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CurrentLine" type="LineInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ VehicleData ++-->
+	<xs:complexType name="TicketValidationService.GetVehicleDataResponseStructure">
+		<xs:choice>
+			<xs:element name="VehicleData" type="TicketValidationService.VehicleData"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.VehicleData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="VehicleRef" type="IBIS-IP.NMTOKEN"/>
+			<xs:element name="RouteDeviation" type="RouteDeviationEnumeration" minOccurs="0"/>
+			<xs:element name="DoorState" type="DoorOpenStateEnumeration" minOccurs="0"/>
+			<xs:element name="MovingDirectionForward" type="IBIS-IP.boolean" minOccurs="0"/>
+			<xs:element name="VehicleMode" type="VehicleModeEnumeration" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

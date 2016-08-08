@@ -2,6 +2,9 @@
 Schemadateien wie Sie aktuell im Projekt [Integrierte Systemarchitektur](https://www.youtube.com/watch?v=D9z8tyyUR1E)
 verwendet werden
 
+# Zusätzliche Services bzw. Schemadateien gegenüber dem master-Branch des VDV:
+* IBIS-IP_TicketValidationService_V1.0.xsd
+
 
 # VDV 301 
 ## Internetprotokoll basiertes integriertes Bordinformationssystem IBIS-IP
