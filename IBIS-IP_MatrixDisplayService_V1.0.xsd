@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with IntelliJ IDEA 2016.1.3 by Martin Rüegsegger (Schweizerische Post) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+		   attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--====  MatrixDisplayService 1.0 2016-08-08  ====-->
+
+	<xs:complexType name="MatrixDisplayService.MatrixCapabilities">
+		<xs:sequence>
+			<xs:element name="XResolution" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Horizontale Auflösung in Pixel der Matrixanzeige</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="YResolution" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Vertikale Auflösung in Pixel der Matrixanzeige</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ColorDepth" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Farbtiefe in Anzahl möglicher Farben</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Formats" type="BitmapFormatEnumeration" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>MIME-Typ der unterstützten Datenformate gemäss [RFC2046]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ScrollModes" type="ScrollModeEnumeration" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Liste der unterstützten Scroll-Modi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Transparency" type="IBIS-IP.boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Wenn true, hat die Anzeige die Fähigkeit, Transparenz zu unterstützen
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MatrixDisplayService.LayoutData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="Layout" type="BitmapLayout"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MatrixDisplayService.ContentData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime">
+				<xs:annotation>
+					<xs:documentation>Angabe des Zeitpunkts der Antwort</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContentRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Eindeutige Identifizierung des Inhalts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Content" type="BitmapContent" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Bitmap-Daten die zeitlich gestaffelt in dem Inhalt dargestellt werden sollen
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!--==== RetreiveOperation Definitions ====-->
+	<xs:complexType name="MatrixDisplayService.RetrieveLayoutRequestStructure">
+		<xs:sequence>
+			<xs:element name="DeviceID" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Eindeutige Geräte-Identifaktionsnummer bzw. Geräte-Einbauort</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MatrixCapabilities" type="MatrixDisplayService.MatrixCapabilities">
+				<xs:annotation>
+					<xs:documentation>Geräte-Einbauort</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MatrixDisplayService.RetrieveLayoutResponseStructure">
+		<xs:choice>
+			<xs:element name="LayoutData" type="MatrixDisplayService.LayoutData">
+				<xs:annotation>
+					<xs:documentation>Struktur zur Beschreibung eines Layouts einer Anzeige</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="MatrixDisplayService.RetrieveContentRequestStructure">
+		<xs:sequence>
+			<xs:element name="ContentRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Eindeutige Identifikation des Inhalts.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MatrixDisplayService.RetrieveContentResponseStructure">
+		<xs:choice>
+			<xs:element name="LayoutData" type="MatrixDisplayService.ContentData">
+				<xs:annotation>
+					<xs:documentation>Struktur zur Beschreibung des Inhalts eines bestimmten Layout-Felds
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

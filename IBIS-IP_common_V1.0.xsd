@@ -702,6 +702,92 @@ farezone</xs:documentation>
 			<xs:element name="FareZoneTypeName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="BitmapLayoutField">
+		<xs:sequence>
+			<xs:element name="X" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Horizontale Position des Layout-Feldes in Pixelvon links (0 = ganz links)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Y" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Vertikale Position des Layout-Feldes in Pixel von oben (0 = ganz oben)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Width" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Breite des Layout-Feldes in Pixel</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Height" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>Höhe des Layout-Feldes in Pixel</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContentRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Referenz auf einen Content der mit RetrieveContent abgeholt werden kann
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BackgroundRef" type="IBIS-IP.NMTOKEN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Referenz auf einen Content, der als Hintergrund dargestellt werden soll.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BitmapLayout">
+		<xs:sequence>
+			<xs:element name="LayoutField" type="BitmapLayoutField" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BitmapContent">
+		<xs:sequence>
+			<xs:element name="Width" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Breite des Bitmaps in Pixel</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Height" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Höhe des Bitmaps in Pixel</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Duration" type="IBIS-IP.duration">
+				<xs:annotation>
+					<xs:documentation>Dauer während der das Bitmap dargestellt werden soll</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContentType" type="BitmapFormatEnumeration">
+				<xs:annotation>
+					<xs:documentation>MIME-Typ der Daten gemäss [RFC2046]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ScrollMode" type="ScrollModeEnumeration">
+				<xs:annotation>
+					<xs:documentation>Art in der das Bitmap durch das Layout-Feld gerollt werden soll.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ScrollSpeed" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Geschwindigkeit in Pixel pro Sekunde mit der das Bitmap durch das Layout-Feld
+						gerollt werden soll. Dieses Feld ist obligatorisch, sobald der ScrollMode nicht „None“ ist.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Data" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:documentation>Base-64 kodierte Daten des Bitmaps im unterContentType angegebenen Format.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<!--==== DataTypes ====-->
 	<xs:complexType name="InternationalTextType">
 		<xs:sequence>

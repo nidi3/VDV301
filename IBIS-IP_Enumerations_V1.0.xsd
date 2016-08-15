@@ -218,7 +218,8 @@
 			<xs:enumeration value="SystemManagementService"/>
 			<xs:enumeration value="TicketingService"/>
 			<xs:enumeration value="TimeService"/>
-			<xs:enumeration value="TestService"/>
+			<xs:enumeration value="PassengerCountingService"/>
+			<xs:enumeration value="TicketValidationService"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ServiceStateEnumeration">
@@ -265,6 +266,20 @@
 			<xs:enumeration value="rail"/>
 			<xs:enumeration value="tram"/>
 			<xs:enumeration value="underground"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ScrollModeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RightToLeft"/>
+			<xs:enumeration value="LeftToRight"/>
+			<xs:enumeration value="TopToBottom"/>
+			<xs:enumeration value="BottomToTop"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BitmapFormatEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="image/png"/>
+			<xs:enumeration value="image/bmp"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
