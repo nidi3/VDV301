@@ -757,7 +757,7 @@ farezone</xs:documentation>
 					<xs:documentation>Höhe des Bitmaps in Pixel</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Duration" type="IBIS-IP.duration">
+			<xs:element name="Duration" type="IBIS-IP.duration" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Dauer während der das Bitmap dargestellt werden soll</xs:documentation>
 				</xs:annotation>
@@ -767,7 +767,7 @@ farezone</xs:documentation>
 					<xs:documentation>MIME-Typ der Daten gemäss [RFC2046]</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ScrollMode" type="ScrollModeEnumeration">
+			<xs:element name="ScrollMode" type="ScrollModeEnumeration" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Art in der das Bitmap durch das Layout-Feld gerollt werden soll.
 					</xs:documentation>
@@ -946,7 +946,13 @@ farezone</xs:documentation>
 			<xs:element name="ReplyPath" type="IBIS-IP.string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="SubscribeResponseStructure">
+    <xs:complexType name="SubscribeGetRequestStructure">
+        <xs:complexContent>
+            <xs:extension base="SubscribeRequestStructure">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SubscribeResponseStructure">
 		<xs:choice>
 			<xs:element name="Active" type="IBIS-IP.boolean"/>
 			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
@@ -958,6 +964,12 @@ farezone</xs:documentation>
 			<xs:element name="ReplyPort" type="IBIS-IP.int" minOccurs="0"/>
 			<xs:element name="ReplyPath" type="IBIS-IP.string" minOccurs="0"/>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UnsubscribeGetRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="UnsubscribeRequestStructure">
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="UnsubscribeResponseStructure">
 		<xs:choice>

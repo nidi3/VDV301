@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 		<!--Copyright 2014 by Swiss Post, Information Technology Services-->
-		<!--$Id: IBIS_IP_V1.0.1.xsd 7599 2016-08-15 07:37:23Z eicherst $-->
+		<!--$Id: IBIS_IP_V1.0.1.xsd 10692 2016-11-18 17:49:42Z rueegseggmar $-->
 
 <!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by Markus Giedigkeit (Trapeze-Elgeba GmbH) -->
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
@@ -206,6 +206,27 @@
 			<xs:element name="TicketValidationService.GetVehicleDataResponse" type="TicketValidationService.GetVehicleDataResponseStructure"/>
 		</xs:sequence>
 	</xs:group>
+	<!--==== MatrixDisplayService ====-->
+	<xs:element name="MatrixDisplayService.RetrieveContentRequest" type="MatrixDisplayService.RetrieveContentRequestStructure"/>
+	<xs:element name="MatrixDisplayService.RetrieveContentResponse" type="MatrixDisplayService.RetrieveContentResponseStructure"/>
+	<xs:element name="MatrixDisplayService.SubscribeLayoutRequest" type="MatrixDisplayService.SubscribeLayoutRequestStructure"/>
+	<xs:element name="MatrixDisplayService.UnsubscribeLayoutRequest" type="MatrixDisplayService.UnsubscribeLayoutRequestStructure"/>
+	<xs:element name="MatrixDisplayService.RetrieveLayoutRequest" type="MatrixDisplayService.RetrieveLayoutRequestStructure"/>
+	<xs:element name="MatrixDisplayService.RetrieveLayoutResponse" type="MatrixDisplayService.RetrieveLayoutResponseStructure"/>
+	<xs:element name="MatrixDisplayService.SubscribeContentRequest" type="MatrixDisplayService.SubscribeContentRequestStructure"/>
+	<xs:element name="MatrixDisplayService.UnsubscribeContentRequest" type="MatrixDisplayService.UnsubscribeContentRequestStructure"/>
+	<xs:group name="MatrixDisplayServiceGroup">
+		<xs:sequence>
+			<xs:element name="MatrixDisplayService.RetrieveContentRequest" type="MatrixDisplayService.RetrieveContentRequestStructure"/>
+			<xs:element name="MatrixDisplayService.RetrieveContentResponse" type="MatrixDisplayService.RetrieveContentResponseStructure"/>
+			<xs:element name="MatrixDisplayService.SubscribeLayoutRequest" type="MatrixDisplayService.SubscribeLayoutRequestStructure"/>
+			<xs:element name="MatrixDisplayService.UnsubscribeLayoutRequest" type="MatrixDisplayService.UnsubscribeLayoutRequestStructure"/>
+			<xs:element name="MatrixDisplayService.RetrieveLayoutRequest" type="MatrixDisplayService.RetrieveLayoutRequestStructure"/>
+			<xs:element name="MatrixDisplayService.RetrieveLayoutResponse" type="MatrixDisplayService.RetrieveLayoutResponseStructure"/>
+			<xs:element name="MatrixDisplayService.SubscribeContentRequest" type="MatrixDisplayService.SubscribeContentRequestStructure"/>
+			<xs:element name="MatrixDisplayService.UnsubscribeContentRequest" type="MatrixDisplayService.UnsubscribeContentRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
 	<!--==== GeneralOperations ====-->
 	<xs:group name="SubscriptionResponseGroup">
 		<xs:choice>
@@ -215,13 +236,13 @@
 	</xs:group>
 	<xs:group name="SubscriptionRequestGroup">
 		<xs:choice>
-			<xs:element name="SubscribeRequest" type="SubscribeRequestStructure"/>
-			<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
+			<xs:element name="SubscribeRequest" type="SubscribeGetRequestStructure"/>
+			<xs:element name="UnsubscribeRequest" type="UnsubscribeGetRequestStructure"/>
 		</xs:choice>
 	</xs:group>
 	<!--==== Subscription-Requests ====-->
-	<xs:element name="SubscribeRequest" type="SubscribeRequestStructure"/>
-	<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
+	<xs:element name="SubscribeRequest" type="SubscribeGetRequestStructure"/>
+	<xs:element name="UnsubscribeRequest" type="UnsubscribeGetRequestStructure"/>
 	<!--==== Subscription-Responses ====-->
 	<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
 	<xs:element name="UnsubscribeResponse" type="UnsubscribeResponseStructure"/>

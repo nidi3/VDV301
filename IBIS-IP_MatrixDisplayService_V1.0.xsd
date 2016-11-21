@@ -70,7 +70,6 @@
 		</xs:sequence>
 	</xs:complexType>
 
-
 	<!--==== RetreiveOperation Definitions ====-->
 	<xs:complexType name="MatrixDisplayService.RetrieveLayoutRequestStructure">
 		<xs:sequence>
@@ -107,13 +106,55 @@
 	</xs:complexType>
 	<xs:complexType name="MatrixDisplayService.RetrieveContentResponseStructure">
 		<xs:choice>
-			<xs:element name="LayoutData" type="MatrixDisplayService.ContentData">
+			<xs:element name="ContentData" type="MatrixDisplayService.ContentData">
 				<xs:annotation>
-					<xs:documentation>Struktur zur Beschreibung des Inhalts eines bestimmten Layout-Felds
+					<xs:documentation>Struktur zur Beschreibung des Inhalts eines bestimmten Content-Felds
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
 		</xs:choice>
 	</xs:complexType>
+
+	<!--==== SubscribeOperation Definitions ====-->
+	<xs:complexType name="MatrixDisplayService.SubscribeLayoutRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="SubscribeRequestStructure">
+				<xs:sequence>
+					<xs:element name="Request" type="MatrixDisplayService.RetrieveLayoutRequestStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MatrixDisplayService.UnsubscribeLayoutRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="UnsubscribeRequestStructure">
+				<xs:sequence>
+					<xs:element name="Request" type="MatrixDisplayService.RetrieveLayoutRequestStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MatrixDisplayService.SubscribeContentRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="SubscribeRequestStructure">
+				<xs:sequence>
+					<xs:element name="Request" type="MatrixDisplayService.RetrieveContentRequestStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MatrixDisplayService.UnsubscribeContentRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="UnsubscribeRequestStructure">
+				<xs:sequence>
+					<xs:element name="Request" type="MatrixDisplayService.RetrieveContentRequestStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
 </xs:schema>
